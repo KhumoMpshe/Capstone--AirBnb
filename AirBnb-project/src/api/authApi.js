@@ -1,4 +1,4 @@
-const API_URL = "https://onrender.com/api/users";
+const API_URL = "https://capstone-airbnb-x51k.onrender.com/api/users";
 
 export async function loginUser(email, password) {
     const response = await fetch(`${API_URL}/login`, {
@@ -37,6 +37,39 @@ export async function registerUser({ username, email, password, role }) {
 
     if (!response.ok) {
         throw new Error(data.message);
+    }
+
+    return data;
+}
+
+export async function hostSignup({
+    username,
+    businessName,
+    email,
+    phoneNumber,
+    password,
+}) {
+    const payload = {
+        username,
+        businessName,
+        email,
+        phoneNumber,
+        password,
+        role: "host",
+    };
+
+    const response = await fetch(`${API_URL}/register`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Host registration failed.");
     }
 
     return data;

@@ -94,9 +94,9 @@ export const loginUser = async (req, res) => {
 
 export const hostSignup = async (req, res) => {
   try {
-    const { displayName, businessName, email, phoneNumber, password } = req.body;
+    const { username, businessName, email, phoneNumber, password } = req.body;
 
-    if (!displayName || !email || !password) {
+    if (!username || !email || !password) {
       return res.status(400).json({ message: "Display name, email, and password are required" });
     }
 
@@ -109,7 +109,7 @@ export const hostSignup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const newHost = await User.create({
-      displayName,
+      username,
       businessName: businessName || "", 
       email,
       phoneNumber: phoneNumber || "",   
@@ -121,7 +121,7 @@ export const hostSignup = async (req, res) => {
       message: "Host registered successfully!", 
       host: {
         id: newHost._id,
-        displayName: newHost.displayName,
+        username: newHost.username,
         email: newHost.email,
         role: newHost.role
       } 

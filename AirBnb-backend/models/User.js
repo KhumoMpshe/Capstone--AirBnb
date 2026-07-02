@@ -1,13 +1,7 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
-  { 
-    displayName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
+  {
     businessName: {
       type: String,
       trim: true,
