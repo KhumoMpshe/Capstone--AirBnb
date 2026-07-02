@@ -12,7 +12,7 @@ function HostSignup() {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { register } = useContext(AuthContext);
+  const { hostSignup } = useContext(AuthContext);
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -32,7 +32,7 @@ function HostSignup() {
     try {
       setLoading(true);
       // include role: 'host' so backend can mark this user as a host
-      await register({ username, email, password, role: "host" });
+      await hostSignup({ username, businessName, email, phoneNumber:phone , password });
       navigate("/");
     } catch (err) {
       setError(err.message || "Could not create host account.");

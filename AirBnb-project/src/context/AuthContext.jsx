@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { loginUser, registerUser } from "../api/authApi";
+import { loginUser, registerUser, hostSignup as hostSignupApi } from "../api/authApi";
 
 export const AuthContext = createContext();
 
@@ -46,6 +46,12 @@ function AuthProvider({ children }) {
         return data;
     }
 
+    async function hostSignup({username, businessName, email, phoneNumber, password }) {
+    const data = await hostSignupApi({username, businessName, email, phoneNumber, password});
+
+    return data;
+    }
+
     function logout() {
         localStorage.removeItem("loggedInUser");
         localStorage.removeItem("token");
@@ -62,6 +68,7 @@ function AuthProvider({ children }) {
                 login,
                 logout,
                 register,
+                hostSignup,
             }}
         >
             {children}
