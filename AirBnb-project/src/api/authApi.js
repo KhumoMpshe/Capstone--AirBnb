@@ -58,7 +58,7 @@ export async function hostSignup({
         role: "host",
     };
 
-    const response = await fetch(`${API_URL}/register`, {
+    const response = await fetch(`${API_URL}/signup-host`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
