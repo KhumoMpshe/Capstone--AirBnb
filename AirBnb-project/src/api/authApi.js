@@ -1,4 +1,4 @@
-const API_URL = "http://onrender.com/api/users";
+const API_URL = "https://onrender.com/api/users";
 
 export async function loginUser(email, password) {
     const response = await fetch(`${API_URL}/login`, {
