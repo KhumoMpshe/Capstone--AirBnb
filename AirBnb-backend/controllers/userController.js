@@ -91,3 +91,44 @@ export const loginUser = async (req, res) => {
         });
     }
 };
+
+export const hostSignup = async (req, res) => {
+  try {
+    const { displayName, businessName, email, phoneNumber, password } = req.body;
+
+    if (!displayName || !email || !password) {
+      return res.status(400).json({ message: "Display name, email, and password are required" });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "An account with this email already exists" });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newHost = await User.create({
+      displayName,
+      businessName: businessName || "", 
+      email,
+      phoneNumber: phoneNumber || "",   
+      password: hashedPassword,         
+      role: 'host'
+    });
+
+    res.status(201).json({ 
+      message: "Host registered successfully!", 
+      host: {
+        id: newHost._id,
+        displayName: newHost.displayName,
+        email: newHost.email,
+        role: newHost.role
+      } 
+    });
+
+  } catch (error) {
+    console.error("Error creating host:", error);
+    res.status(500).json({ message: "Server error during host signup" });
+  }
+};
