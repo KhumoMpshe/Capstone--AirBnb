@@ -36,13 +36,13 @@ function Header() {
 
                 <div className="header-right">
 
-                    {!user && (
+                    {(!user || user.role ==="user") && (
                         <Link to="/host-signup">Become a host</Link>
                     )}
 
                     {user && (
                         <span className="welcome-user">
-                            Hi, {user.username}
+                            Hi, {user.username |"User"}
                         </span>
                     )}
 
@@ -68,7 +68,7 @@ function Header() {
                                     Reservations
                                 </Link>
 
-                                {user?.role === "admin" && (
+                                {(user?.role === "admin" || user?.role === "host") && (
                                     <Link to="/admin/add-listing" className="admin-btn">
                                         Add Listing
                                     </Link>

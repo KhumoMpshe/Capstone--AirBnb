@@ -31,7 +31,7 @@ function App() {
         <Route 
           path="/admin/add-listing" 
           element={
-            user?.role === "admin"
+            user?.role === "admin" || user?.role === "host"
             ? <AdminAddListing />
             : <Navigate to="/" />
           }
