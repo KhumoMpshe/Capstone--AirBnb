@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/accommodations";
+const API_URL = "http://onrender.com/api/accommodations";
 
 export async function getAccommodations() {
     const response = await fetch(API_URL);
