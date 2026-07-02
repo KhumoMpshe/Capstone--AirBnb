@@ -49,7 +49,7 @@ function HostSignup() {
 
         <input
           type="text"
-          placeholder="Display name (what guests see)"
+          placeholder="Username (what guests see)"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
