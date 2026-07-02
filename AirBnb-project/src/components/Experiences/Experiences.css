@@ -1,0 +1,16 @@
+.experiences {
+  padding: 32px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.experiences h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}

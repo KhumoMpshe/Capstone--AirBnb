@@ -1,0 +1,31 @@
+.inspiration {
+    padding: 32px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.inspiration h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.inspiration-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 650px;
+}
+
+.locations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Ensure four cards per row on large viewports to match original layout */
+@media (min-width: 1200px) {
+    .locations {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+}

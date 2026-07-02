@@ -1,0 +1,46 @@
+.reservations-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.reservations-page h1 {
+    margin-bottom: 30px;
+}
+
+.reservations-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.reservations-table th {
+    background: #ff385c;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.reservations-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.reservations-table tr:hover {
+    background: #fafafa;
+}
+
+.cancel-btn {
+    background: #ff385c;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: #e31c5f;
+}

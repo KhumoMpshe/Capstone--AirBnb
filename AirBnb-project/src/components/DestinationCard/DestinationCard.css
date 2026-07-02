@@ -1,0 +1,59 @@
+.destination-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.destination-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-8px);
+}
+.destination-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.destination-card:hover .destination-image {
+    transform: scale(1.04);
+}
+
+.destination-info {
+    padding: 18px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--card-bg, #d94a6a);
+}
+
+.destination-info h3 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.destination-distance {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.destination-desc {
+    font-size: 14px;
+    opacity: 0.95;
+    margin-top: 6px;
+}
+
+/* Per-card color variants (works when links are direct children of .locations) */
+.destination-link:nth-child(1) .destination-info { --card-bg: #d94a6a; }
+.destination-link:nth-child(2) .destination-info { --card-bg: #b5388a; }
+.destination-link:nth-child(3) .destination-info { --card-bg: #ff6f4d; }
+.destination-link:nth-child(4) .destination-info { --card-bg: #ff4b4b; }

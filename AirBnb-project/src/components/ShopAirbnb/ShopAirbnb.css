@@ -1,0 +1,44 @@
+.shop-airbnb {
+    padding: 32px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.shop-banner {
+    height: 350px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.shop-content {
+    color: black;
+    max-width: 320px;
+}
+
+.shop-content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.shop-content button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+}
+
+.shop-container {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) minmax(340px, 1fr);
+    gap: 24px;
+    align-items: center;
+    margin-top: 40px;
+}

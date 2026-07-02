@@ -1,0 +1,151 @@
+.booking-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+
+.booking-price {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.booking-price h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.booking-price span {
+    color: #717171;
+    font-size: 18px;
+}
+
+.booking-box {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.booking-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.booking-row div {
+    padding: 14px;
+}
+
+.booking-row div:first-child {
+    border-right: 1px solid #ddd;
+}
+
+.booking-row div:last-child {
+    border-right: none;
+}
+
+.booking-row label,
+.guest-row label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.guest-row {
+    padding: 14px;
+    border-top: 1px solid #ddd;
+}
+
+.guest-row select {
+    width: 100%;
+    border: none;
+    font-size: 15px;
+    background: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container input {
+    width: 100%;
+    border: none !important;
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.react-datepicker__input-container input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.react-datepicker__triangle {
+    display: none;
+}
+
+.reserve-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #ff385c;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.reserve-btn:hover {
+    background: #e31c5f;
+}
+
+.reserve-note {
+    text-align: center;
+    color: #717171;
+    margin: 18px 0;
+    font-size: 14px;
+}
+
+.price-breakdown {
+    margin-top: 20px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 15px;
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.react-datepicker-ignore-onclickoutside,
+.react-datepicker__input-container input {
+    border: none !important;
+    border-bottom: none !important;
+}

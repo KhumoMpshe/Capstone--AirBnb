@@ -1,0 +1,108 @@
+.accommodation-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.accommodation-card {
+    display: flex;
+    gap: 22px;
+
+    padding: 24px 0;
+
+    border-bottom: 1px solid #ebebeb;
+
+    transition: .2s;
+}
+
+.accommodation-card:hover {
+    transform: scale(1.01);
+}
+
+.accommodation-card img {
+    width: 320px;
+    height: 220px;
+
+    border-radius: 16px;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+}
+
+.accommodation-info {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+}
+
+.card-header small {
+    color: #717171;
+    font-size: 14px;
+}
+
+.card-header h2 {
+    margin-top: 8px;
+
+    font-size: 24px;
+
+    color: #222;
+}
+
+.heart-icon {
+    font-size: 22px;
+
+    color: #717171;
+
+    cursor: pointer;
+}
+
+.accommodation-info p {
+    margin: 8px 0;
+
+    color: #717171;
+
+    line-height: 1.5;
+}
+
+.card-footer {
+    margin-top: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+
+    gap: 6px;
+
+    align-items: center;
+
+    color: #222;
+}
+
+.card-footer h3 {
+    font-size: 24px;
+
+    color: #222;
+}
+
+.card-footer span {
+    font-size: 16px;
+
+    font-weight: normal;
+
+    color: #717171;
+}

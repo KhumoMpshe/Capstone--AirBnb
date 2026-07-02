@@ -1,0 +1,42 @@
+.admin-page {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+}
+
+.admin-page h1 {
+    margin-bottom: 30px;
+}
+
+.listing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.listing-form input,
+.listing-form select,
+.listing-form textarea {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.listing-form textarea {
+    resize: vertical;
+}
+
+.listing-form button {
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #ff385c;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.listing-form button:hover {
+    background: #e31c5f;
+}

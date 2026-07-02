@@ -1,0 +1,36 @@
+.experience-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.experience-card img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.experience-overlay {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    color: black;
+}
+
+.experience-overlay h3 {
+    font-size: 34px;
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+.experience-overlay button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}

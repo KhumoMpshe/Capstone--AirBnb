@@ -1,0 +1,1193 @@
+/* ========================================
+   RESPONSIVE DESIGN SYSTEM - MOBILE FIRST
+   ======================================== */
+
+:root {
+  /* Breakpoints */
+  --bp-xs: 320px;
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1200px;
+  --bp-2xl: 1400px;
+
+  /* Spacing */
+  --container-max: 1200px;
+  --gap-xs: 8px;
+  --gap-sm: 12px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 32px;
+
+  /* Colors */
+  --muted: #717171;
+  --bg: #ffffff;
+  --accent: #ff385c;
+  --accent-hover: #e31c5f;
+  --border: #dddddd;
+  --divider: #ebebeb;
+  --text-primary: #222222;
+  --text-secondary: #555555;
+  --text-light: #717171;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================
+   BASE STYLES (MOBILE FIRST)
+   ======================================== */
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background-color: var(--bg);
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========================================
+   CONTAINER & GRID UTILITIES
+   ======================================== */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gap-md);
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+}
+
+.col {
+  flex: 1 1 0;
+  min-width: 100%;
+}
+
+/* ========================================
+   VISIBILITY UTILITIES
+   ======================================== */
+
+.hide-on-mobile {
+  display: none;
+}
+
+.show-on-mobile {
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* ========================================
+   BUTTON UTILITIES
+   ======================================== */
+
+.btn-full-mobile {
+  width: 100%;
+  display: block;
+}
+
+.btn-touch-friendly {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* ========================================
+   COMPONENT-LEVEL RESPONSIVENESS
+   ======================================== */
+
+/* HEADER */
+.header {
+  padding: var(--gap-sm) var(--gap-md);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap-md);
+  flex-wrap: wrap;
+}
+
+.header-nav {
+  display: none;
+  gap: var(--gap-lg);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  flex-direction: row;
+}
+
+.nav-btn {
+  padding: var(--gap-sm) 0;
+  font-size: 16px;
+}
+
+/* HERO */
+.hero {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  padding: var(--gap-md);
+}
+
+.hero-content {
+  padding: var(--gap-md);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.hero-content h1 {
+  font-size: 32px;
+  margin-bottom: var(--gap-md);
+}
+
+.hero-content p {
+  font-size: 16px;
+  margin-bottom: var(--gap-md);
+}
+
+.hero-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+/* ACCOMMODATION CARD */
+.accommodation-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  padding: var(--gap-md) 0;
+}
+
+.accommodation-card img {
+  width: 100%;
+  height: 240px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.card-header h2 {
+  font-size: 18px;
+}
+
+.card-footer h3 {
+  font-size: 18px;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  flex-direction: column;
+  padding: var(--gap-md);
+  gap: var(--gap-md);
+  margin: var(--gap-md) auto;
+  border-radius: 16px;
+}
+
+.search-item {
+  width: 100%;
+}
+
+.search-item label {
+  font-size: 11px;
+  margin-bottom: var(--gap-xs);
+}
+
+.search-item input {
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.search-bar button {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+}
+
+/* FOOTER */
+.footer {
+  padding: var(--gap-lg) var(--gap-md);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-lg);
+  margin-bottom: var(--gap-lg);
+}
+
+.footer-bottom {
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.footer-right {
+  flex-direction: column;
+  gap: var(--gap-sm);
+  align-items: flex-start;
+}
+
+/* FILTER BAR */
+.filter-bar {
+  padding: var(--gap-md);
+  gap: var(--gap-sm);
+}
+
+.filter-item {
+  flex: 1 1 100%;
+  min-width: 100%;
+}
+
+.filter-item input,
+.filter-item select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* LOCATION PAGE */
+.location-page {
+  padding: var(--gap-md);
+  width: 100%;
+}
+
+.location-header h1 {
+  font-size: 28px;
+}
+
+.location-list {
+  gap: var(--gap-md);
+}
+
+/* SHOP AIRBNB */
+.shop-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  margin-top: var(--gap-lg);
+}
+
+.shop-content h2 {
+  font-size: 36px;
+  margin-bottom: var(--gap-md);
+}
+
+.shop-banner {
+  height: 300px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+}
+
+.shop-content button {
+  padding: 14px 28px;
+  font-size: 16px;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* SMALL PHONES (360px - 480px) */
+@media (min-width: 320px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 var(--gap-md);
+  }
+
+  .accommodation-card img {
+    height: 260px;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .experience-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .experiences {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .shop-container {
+    padding: 0 var(--gap-sm);
+    gap: var(--gap-md);
+  }
+
+  .shop-banner {
+    height: 220px;
+    border-radius: 14px;
+  }
+
+  .shop-content h2 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .shop-content button {
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  .footer {
+    padding: var(--gap-lg) var(--gap-sm);
+  }
+
+  .footer-top {
+    gap: var(--gap-md);
+  }
+
+  .footer-bottom {
+    gap: var(--gap-md);
+  }
+
+  .footer-right {
+    align-items: flex-start;
+  }
+}
+
+/* LARGE PHONES (481px - 767px) */
+@media (min-width: 481px) {
+  html {
+    font-size: 15px;
+  }
+
+  .search-bar {
+    padding: var(--gap-lg);
+    margin: var(--gap-lg) auto;
+  }
+
+  .accommodation-card {
+    flex-direction: row;
+    gap: var(--gap-lg);
+  }
+
+  .accommodation-card img {
+    width: 280px;
+    height: 200px;
+    flex-shrink: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 40px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .location-header h1 {
+    font-size: 32px;
+  }
+}
+
+/* TABLETS (768px - 1023px) */
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  .container {
+    padding: 0 var(--gap-lg);
+  }
+
+  .header {
+    padding: var(--gap-md) var(--gap-lg);
+  }
+
+  .header-nav {
+    display: flex;
+    gap: var(--gap-lg);
+  }
+
+  .header-right {
+    gap: var(--gap-md);
+  }
+
+  .hero {
+    height: 500px;
+    background-size: 80% auto;
+  }
+
+  .hero-content {
+    max-width: 500px;
+    padding: var(--gap-lg);
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: var(--gap-lg);
+  }
+
+  .hero-content p {
+    font-size: 20px;
+    margin-bottom: var(--gap-lg);
+  }
+
+  .hero-btn {
+    padding: 14px 32px;
+    font-size: 18px;
+  }
+
+  .accommodation-card {
+    gap: var(--gap-lg);
+    padding: var(--gap-lg) 0;
+  }
+
+  .accommodation-card img {
+    width: 300px;
+    height: 220px;
+  }
+
+  .card-header h2 {
+    font-size: 22px;
+  }
+
+  .card-footer h3 {
+    font-size: 22px;
+  }
+
+  .search-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-lg);
+    padding: var(--gap-lg);
+    border-radius: 25px;
+    margin: var(--gap-lg) auto;
+  }
+
+  .search-bar button {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-xl);
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: var(--gap-lg);
+  }
+
+  .filter-item {
+    flex: 1;
+    min-width: auto;
+  }
+
+  .location-header h1 {
+    font-size: 36px;
+  }
+
+  /* Let component CSS determine card layout on large phones */
+
+  .col {
+    flex: 1 1 calc(50% - var(--gap-md) / 2);
+    min-width: auto;
+  }
+}
+
+/* SMALL LAPTOPS (1024px - 1199px) */
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+
+  .hide-on-mobile {
+    display: initial;
+  }
+
+  .show-on-mobile {
+    display: none;
+  }
+
+  .container {
+    padding: 0 var(--gap-lg);
+  }
+
+  .header {
+    padding: var(--gap-lg) var(--gap-lg);
+  }
+
+  .header-nav {
+    gap: var(--gap-xl);
+  }
+
+  .header-right {
+    gap: var(--gap-lg);
+  }
+
+  .hero {
+    height: 600px;
+    background-size: 90% auto;
+  }
+
+  .hero-content {
+    max-width: 600px;
+    padding: var(--gap-xl);
+  }
+
+  .hero-content h1 {
+    font-size: 56px;
+  }
+
+  .hero-content p {
+    font-size: 21px;
+  }
+
+  .hero-btn {
+    padding: 16px 36px;
+    font-size: 18px;
+  }
+
+  .accommodation-card {
+    gap: var(--gap-xl);
+    padding: var(--gap-xl) 0;
+  }
+
+  .accommodation-card img {
+    width: 320px;
+    height: 220px;
+  }
+
+  .card-header h2 {
+    font-size: 24px;
+  }
+
+  .card-footer h3 {
+    font-size: 24px;
+  }
+
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 12px 16px;
+    border-radius: 40px;
+    margin: var(--gap-xl) auto;
+    max-width: 900px;
+  }
+
+  .search-item {
+    flex: 1;
+    padding: 0 var(--gap-lg);
+    border-right: 1px solid var(--border);
+  }
+
+  .search-item:last-of-type {
+    border-right: none;
+  }
+
+  .search-bar button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin-left: var(--gap-md);
+    font-size: 20px;
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-xl);
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: var(--gap-xl);
+  }
+
+  .filter-item {
+    flex: 1;
+  }
+
+  .location-header h1 {
+    font-size: 40px;
+  }
+
+  /* Restoring component-level control for destination/experience cards */
+
+  .col {
+    flex: 1 1 calc(25% - var(--gap-md) * 0.75);
+  }
+
+  .shop-container {
+    /* keep shop layout controlled by component stylesheet; no overrides here */
+    /* (removed earlier overrides to restore original ShopAirbnb.css behavior) */
+  }
+}
+
+/* LARGE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 1200px;
+    padding: 0 var(--gap-xl);
+  }
+
+  .header {
+    padding: var(--gap-lg) 40px;
+  }
+
+  .hero {
+    height: 650px;
+  }
+
+  .hero-content {
+    max-width: 650px;
+    padding: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 60px;
+  }
+
+  .accommodation-card img {
+    width: 340px;
+    height: 240px;
+  }
+
+  .search-bar {
+    max-width: 1000px;
+    margin: var(--gap-xl) auto;
+  }
+
+  .search-item {
+    padding: 0 25px;
+  }
+
+  .search-item label {
+    font-size: 13px;
+  }
+
+  .search-item input {
+    font-size: 16px;
+  }
+
+  .search-bar button {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    margin-left: var(--gap-lg);
+  }
+
+  .footer {
+    padding: var(--gap-xl) 40px;
+  }
+
+  .col {
+    flex: 1 1 calc(25% - var(--gap-md));
+  }
+}
+
+/* VERY LARGE DESKTOP (1400px+) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .col {
+    flex: 1 1 calc(25% - var(--gap-lg));
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY & MOTION PREFERENCES
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1a;
+    --text-primary: #f0f0f0;
+    --text-secondary: #e0e0e0;
+    --border: #444444;
+  }
+}
+
+/* ========================================
+   TOUCH DEVICE ADJUSTMENTS
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .nav-btn {
+    padding: var(--gap-md);
+  }
+
+  .search-bar button:active {
+    transform: scale(0.95);
+  }
+
+  .hero-btn:active {
+    transform: scale(0.95);
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .header,
+  .footer,
+  .search-bar,
+  .filter-bar {
+    display: none;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+}
+
+/* ========================================
+   ADDITIONAL UTILITIES
+   ======================================== */
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-sm {
+  margin-top: var(--gap-sm);
+}
+
+.mt-md {
+  margin-top: var(--gap-md);
+}
+
+.mt-lg {
+  margin-top: var(--gap-lg);
+}
+
+.mb-sm {
+  margin-bottom: var(--gap-sm);
+}
+
+.mb-md {
+  margin-bottom: var(--gap-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--gap-lg);
+}
+
+.pt-md {
+  padding-top: var(--gap-md);
+}
+
+.pt-lg {
+  padding-top: var(--gap-lg);
+}
+
+.pb-md {
+  padding-bottom: var(--gap-md);
+}
+
+.pb-lg {
+  padding-bottom: var(--gap-lg);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gap-sm {
+  gap: var(--gap-sm);
+}
+
+.gap-md {
+  gap: var(--gap-md);
+}
+
+.gap-lg {
+  gap: var(--gap-lg);
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+/* ========================================
+   SCROLL BEHAVIOR
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+   FOCUS VISIBLE FOR KEYBOARD NAVIGATION
+   ======================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   RESPONSIVE TABLE ADJUSTMENTS
+   ======================================== */
+
+/* QUICK FIX: prevent right-side white gap and horizontal overflow on small screens */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* ensure nothing can push beyond the viewport */
+}
+
+/* Ensure all top-level layout boxes respect the viewport width */
+.container,
+.shop-airbnb,
+.shop-container,
+.header,
+.header-top,
+.header-search,
+.search-bar,
+.location-page {
+  box-sizing: border-box;
+  max-width: 100vw;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Make large images and banners fit the viewport without creating overflow */
+.shop-banner,
+img,
+picture,
+video {
+  max-width: 100vw;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Constrain dropdowns and off-canvas menus so they don't overflow */
+.dropdown-menu {
+  right: 8px;
+  left: auto;
+  max-width: calc(100vw - 16px);
+}
+
+/* Small-screen tweaks: keep header controls compact and on one row */
+@media (max-width: 420px) {
+  .header-top { gap: 8px; }
+  .logo a { font-size: 16px; }
+  .header-right { gap: 6px; }
+  .search-bar { margin: 8px 0 12px; }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--gap-md) 0;
+}
+
+th,
+td {
+  padding: var(--gap-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--divider);
+}
+
+@media (max-width: 767px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  th {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin-bottom: var(--gap-lg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: var(--gap-md);
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: var(--gap-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+}
+
+/* ==================================================
+   MOBILE (320px-480px) - prevent overflow
+   ================================================== */
+@media (max-width: 480px) {
+  html, body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure top-level layout containers never exceed viewport */
+  .container,
+  .shop-airbnb,
+  .shop-container,
+  .header,
+  .header-top,
+  .header-search,
+  .search-bar,
+  .experiences,
+  .locations,
+  .experience-grid {
+    box-sizing: border-box !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Force single-column grids */
+  .experience-grid,
+  .locations {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Constrain images, banners and media */
+  img, picture, video, .shop-banner {
+    max-width: calc(100vw - 24px) !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  /* Dropdowns / off-canvas elements */
+  .dropdown-menu, .offcanvas, .modal {
+    left: 8px !important;
+    right: 8px !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+
+  /* Limit absolute overlays so they don't push width */
+  .experience-overlay, .destination-info, .hero-content {
+    left: 12px !important;
+    right: 12px !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  /* Defensive: remove large transforms that may create overflow */
+  [style*="transform"] {
+    transform: none !important;
+  }
+
+  /* ShopAir - ensure content and banner fit cleanly on small screens */
+  .shop-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: 16px !important;
+  }
+
+  .shop-content {
+    padding: 8px 12px !important;
+  }
+
+  .shop-content h2 {
+    font-size: 20px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .shop-banner {
+    height: 220px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .shop-banner img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* Footer: make columns stack and reduce padding */
+  .footer {
+    padding: 18px 12px !important;
+  }
+
+  .footer-top {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .footer-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+
+  .footer-right {
+    align-items: flex-start !important;
+  }
+
+}

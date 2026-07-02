@@ -1,0 +1,44 @@
+.future {
+    padding: 40px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.future h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.future-tabs {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.future-tabs button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+}
+
+.future-tabs button:hover {
+    color: black;
+}
+
+.future-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.future-grid h4 {
+    margin-bottom: 5px;
+}
+
+.future-grid p {
+    color: gray;
+}
