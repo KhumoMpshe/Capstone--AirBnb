@@ -1,0 +1,37 @@
+.host-dashboard{
+    display:flex;
+    min-height:100vh;
+    background:#f7f7f7;
+}
+
+.dashboard-sidebar{
+    width:260px;
+    background:white;
+    border-right:1px solid #ddd;
+    padding:30px;
+}
+
+.dashboard-sidebar h2{
+    margin-bottom:30px;
+}
+
+.dashboard-sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.dashboard-sidebar a{
+    text-decoration:none;
+    color:#222;
+    font-weight:600;
+}
+
+.dashboard-sidebar a:hover{
+    color:#ff385c;
+}
+
+.dashboard-content{
+    flex:1;
+    padding:40px;
+}

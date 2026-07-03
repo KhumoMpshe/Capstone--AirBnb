@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
@@ -5,12 +6,32 @@ import CostCalculator from "../components/CostCalculator/CostCalculator";
 import locations from "../data/locations";
 import hostImage from "../assets/images/host.jpg";
 import { FaStar, FaHome, FaWifi, FaKey, FaCar, FaSwimmingPool, FaTv } from "react-icons/fa";
-
+import Calendar from "../components/Calendar/Calendar";
 import "./LocationDetails.css";
 import { FaT, FaWind } from "react-icons/fa6";
 
 function LocationDetails() {
     const { id } = useParams();
+
+    const [checkIn, setCheckIn] = useState(null);
+    const [checkOut, setCheckOut] = useState(null);
+
+    const nights =
+    checkIn && checkOut
+    ? Math.ceil(
+            (checkOut - checkIn) / (1000 * 60 * 60 * 24)
+    )
+    : 0;
+
+    const formatDate = (date) => {
+    if (!date) return "Add date";
+
+        return date.toLocaleDateString("en-ZA", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        });
+    };
 
     const location = locations.find(
         (item) => item.id === Number(id)
@@ -178,44 +199,38 @@ function LocationDetails() {
                             <section className="booking-summary">
                                 <div className="booking-summary-header">
                                     <div>
-                                        <h2>7 nights in {location.location}</h2>
-                                        <p>July 19, 2026 - July 26, 2026</p>
+                                        <h2>
+                                            {nights > 0
+                                                ? `${nights} night${nights > 1 ? "s" : ""}`
+                                                : "Select your stay"}
+                                            {" "}in {location.location}
+                                        </h2>
+
+                                        <p>
+                                            {formatDate(checkIn)} - {formatDate(checkOut)}
+                                        </p>
                                     </div>
-                                    <button className="clear-dates">Clear dates</button>
+                                    <button
+                                        className="clear-dates"
+                                        onClick={() => {
+                                            setCheckIn(null);
+                                            setCheckOut(null);
+                                        }}
+                                    >
+                                        Clear dates
+                                    </button>
+
                                 </div>
 
                                 <div className="calendar-preview">
-                                    <div className="calendar-months">
-                                        <div>
-                                            <span>19 July 2026</span>
-                                            <div className="calendar-grid">
-                                                <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
-                                                <div className="calendar-day empty"></div>
-                                                <div className="calendar-day empty"></div>
-                                                <div className="calendar-day empty"></div>
-                                                <div className="calendar-day inactive">1</div>
-                                                <div className="calendar-day selected">4</div>
-                                                <div className="calendar-day in-range">5</div>
-                                                <div className="calendar-day in-range">6</div>
-                                                <div className="calendar-day in-range">7</div>
-                                                <div className="calendar-day selected">8</div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span>26 July 2026</span>
-                                            <div className="calendar-grid">
-                                                <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
-                                                <div className="calendar-day empty"></div>
-                                                <div className="calendar-day inactive">1</div>
-                                                <div className="calendar-day inactive">2</div>
-                                                <div className="calendar-day inactive">3</div>
-                                                <div className="calendar-day empty"></div>
-                                                <div className="calendar-day empty"></div>
-                                                <div className="calendar-day empty"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Calendar
+                                        checkIn={checkIn}
+                                        checkOut={checkOut}
+                                        setCheckIn={setCheckIn}
+                                        setCheckOut={setCheckOut}
+                                    />
                                 </div>
+                                        
 
                                 <div className="rating-breakdown">
                                     <div className="rating-summary">
@@ -325,7 +340,14 @@ function LocationDetails() {
                     </div>
 
                     <div className="details-right">
-                        <CostCalculator pricePerNight={location.price} />
+                        <CostCalculator
+                            location={location}
+                            pricePerNight={location.price}
+                            checkIn={checkIn}
+                            checkOut={checkOut}
+                            setCheckIn={setCheckIn}
+                            setCheckOut={setCheckOut}
+                        />
                     </div>
                 </div>
             </main>

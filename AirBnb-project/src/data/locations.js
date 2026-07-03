@@ -60,6 +60,7 @@ const locations = [
       capeTownApartment2,
       capeTownApartment3,
       capeTownApartment4,
+    
     ],
     guests: 4,
     bedrooms: 2,

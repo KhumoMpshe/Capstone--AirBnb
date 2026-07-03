@@ -36,7 +36,7 @@
 }
 
 .booking-row div {
-    padding: 14px;
+    padding: 5px;
 }
 
 .booking-row div:first-child {
@@ -81,6 +81,7 @@
     box-shadow: none;
     padding: 0;
     margin: 0;
+    align-items: center;
     font-size: 15px;
     font-family: inherit;
     cursor: pointer;
@@ -142,6 +143,33 @@ hr {
     border: none;
     border-top: 1px solid #ddd;
     margin-top: 20px;
+}
+
+.react-datepicker {
+    font-size: 13px;
+    width: auto;
+}
+
+.react-datepicker__header {
+    padding: 10px 12px;
+}
+
+.react-datepicker__current-month {
+    font-size: 0.95rem;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+    width: 2.4rem;
+    height: 2.4rem;
+    line-height: 2.4rem;
+    margin: 0.08rem;
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range {
+    border-radius: 50%;
 }
 
 .react-datepicker-ignore-onclickoutside,

@@ -9,6 +9,9 @@ import HostSignup from "./pages/HostSignup";
 import Reservations from "./pages/Reservations";
 import Footer from "./components/Footer/Footer";
 import AdminAddListing from "./pages/AdminAddListing";
+import AdminListings from "./pages/AdminListings";
+import HostDashboard from "./pages/HostDashboard";
+import HostHome from "./pages/HostHome";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
@@ -28,14 +31,19 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/host-signup" element={<HostSignup />} />
         <Route path="/reservations" element={<Reservations />} />
-        <Route 
-          path="/admin/add-listing" 
+        <Route
+          path="/host"
           element={
-            user?.role === "admin" || user?.role === "host"
-            ? <AdminAddListing />
-            : <Navigate to="/" />
+            user?.role === "host" || user?.role === "admin"
+              ? <HostDashboard />
+              : <Navigate to="/" />
           }
-        />
+        >
+          <Route index element={<HostHome />}/>
+          <Route path="dashboard" element={<HostHome />}/>
+          <Route path="listings" element={<AdminListings />}/>
+          <Route path="add-listing" element={<AdminAddListing />}/>
+        </Route>
       </Routes>
 
       <Footer />

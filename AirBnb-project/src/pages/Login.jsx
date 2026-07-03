@@ -26,13 +26,20 @@ function Login() {
             setError("Please enter your password.");
             return;
         }
-
+        
         try {
-            await login(email, password);
+            const data = await login(email, password);
 
             alert("Login successful!");
 
-            navigate("/");
+        if (data.user.role === "host") {
+                navigate("/host/dashboard");
+            } else if (data.user.role === "admin") {
+                navigate("/host/dashboard");
+            } else {
+                navigate("/");
+            }
+            
         } catch (error) {
             setError(error.message);
         }

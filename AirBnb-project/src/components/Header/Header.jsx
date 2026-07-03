@@ -42,7 +42,7 @@ function Header() {
 
                     {user && (
                         <span className="welcome-user">
-                            Hi, {user.username |"User"}
+                            Hi, {user.username || "User"}
                         </span>
                     )}
 
@@ -69,9 +69,15 @@ function Header() {
                                 </Link>
 
                                 {(user?.role === "admin" || user?.role === "host") && (
-                                    <Link to="/admin/add-listing" className="admin-btn">
-                                        Add Listing
-                                    </Link>
+                                    <>
+                                        <Link to="/host/dashboard" className="admin-btn">
+                                            Dashboard
+                                        </Link>
+
+                                        <Link to="/host/add-listing" className="admin-btn">
+                                            Add Listing
+                                        </Link>
+                                    </>
                                 )}
 
                                 {user ? (

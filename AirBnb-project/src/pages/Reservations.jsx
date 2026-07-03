@@ -1,36 +1,41 @@
+import { useEffect, useState } from "react";
 import "./Reservations.css";
 
 function Reservations() {
+    const [reservations, setReservations] = useState([]);
 
-    const reservations = [
-        {
-            id: 1,
-            property: "Modern Apartment",
-            location: "Cape Town",
-            checkIn: "2026-07-10",
-            checkOut: "2026-07-15",
-            guests: 2,
-            total: 7500,
-        },
-        {
-            id: 2,
-            property: "Beach House",
-            location: "Durban",
-            checkIn: "2026-08-05",
-            checkOut: "2026-08-12",
-            guests: 4,
-            total: 12400,
-        },
-    ];
+    useEffect(() => {
+        const storedReservations =
+            JSON.parse(localStorage.getItem("reservations")) || [];
+        setReservations(storedReservations);
+    }, []);
+
+    const handleCancel = (id) => {
+        const updatedReservations = reservations.filter(
+            (reservation) => reservation.id !== id
+        );
+
+        setReservations(updatedReservations);
+        localStorage.setItem(
+            "reservations",
+            JSON.stringify(updatedReservations)
+        );
+    };
 
     return (
         <div className="reservations-page">
 
             <h1>My Reservations</h1>
 
-            <table className="reservations-table">
+            {reservations.length === 0 ? (
+                <div className="no-reservations">
+                    <p>You have no reservations yet.</p>
+                    <p>Select dates and reserve a stay to see it here.</p>
+                </div>
+            ) : (
+                <table className="reservations-table">
 
-                <thead>
+                    <thead>
                     <tr>
                         <th>Property</th>
                         <th>Location</th>
@@ -61,7 +66,10 @@ function Reservations() {
                             <td>R{reservation.total}</td>
 
                             <td>
-                                <button className="cancel-btn">
+                                <button
+                                    className="cancel-btn"
+                                    onClick={() => handleCancel(reservation.id)}
+                                >
                                     Cancel
                                 </button>
                             </td>
@@ -72,7 +80,8 @@ function Reservations() {
 
                 </tbody>
 
-            </table>
+                </table>
+            )}
 
         </div>
     );

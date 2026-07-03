@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./AdminAddListing.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function AdminAddListing() {
   const [listing, setListing] = useState({
     title: "",
@@ -12,9 +14,16 @@ function AdminAddListing() {
     bathrooms: "",
     price: "",
   });
+  const [images, setImages] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleChange(event) {
-    const { name, value } = event.target;
+    const { name, value, files } = event.target;
+
+    if (name === "images") {
+      setImages(Array.from(files || []));
+      return;
+    }
 
     setListing((prev) => ({
       ...prev,
@@ -26,26 +35,33 @@ function AdminAddListing() {
     event.preventDefault();
 
     const token = localStorage.getItem("token");
+    setIsSubmitting(true);
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/accommodations",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            ...listing,
-            amenities: ["Wi-Fi", "Kitchen"],
-            images: ["image1.jpg"],
-            cleaningFee: 350,
-            serviceFee: 250,
-            occupancyTaxes: 180,
-          }),
-        }
-      );
+      const formData = new FormData();
+
+      formData.append("title", listing.title);
+      formData.append("location", listing.location);
+      formData.append("description", listing.description);
+      formData.append("type", listing.type);
+      formData.append("guests", listing.guests);
+      formData.append("bedrooms", listing.bedrooms);
+      formData.append("bathrooms", listing.bathrooms);
+      formData.append("price", listing.price);
+      formData.append("amenities", JSON.stringify(["Wi-Fi", "Kitchen"]));
+      formData.append("cleaningFee", "350");
+      formData.append("serviceFee", "250");
+      formData.append("occupancyTaxes", "180");
+
+      images.forEach((image) => formData.append("images", image));
+
+      const response = await fetch(`${API_URL}/api/accommodations`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
       const data = await response.json();
 
@@ -62,11 +78,15 @@ function AdminAddListing() {
           bathrooms: "",
           price: "",
         });
+        setImages([]);
       } else {
-        alert(data.message);
+        alert(data.message || "Failed to add listing.");
       }
     } catch (error) {
-      alert("Something went wrong.");
+      console.error(error);
+      alert("Something went wrong while adding your listing.");
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -152,8 +172,17 @@ function AdminAddListing() {
           onChange={handleChange}
         />
 
-        <button type="submit">
-          Add Listing
+        <input
+          type="file"
+          name="images"
+          placeholder="Upload images"
+          onChange={handleChange}
+          multiple
+          accept="image/*"
+        />
+
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Adding..." : "Add Listing"}
         </button>
 
       </form>
