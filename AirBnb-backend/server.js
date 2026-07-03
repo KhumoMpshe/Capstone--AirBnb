@@ -17,7 +17,10 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:5173/", "https://capstone-airbnb-c1ux.onrender.com/"],
+  origin: [
+    "http://localhost:5173", 
+    "https://capstone-airbnb-c1ux.onrender.com"
+  ],
   credentials: true
 }));
 
