@@ -87,19 +87,16 @@ function CostCalculator({ location, pricePerNight, checkIn, checkOut, setCheckIn
 
           <div>
             <label>CHECK-OUT</label>
-
-            <p className="selected-date">
-              <DatePicker
-                selected={checkOut}
-                onChange={(date) => setCheckOut(date)}
-                placeholderText="Add dates"
-                dateFormat="dd MMM yyyy"
-                minDate={checkIn}
-                selectsEnd
-                startDate={checkIn}
-                endDate={checkOut}
-              />
-            </p>
+            <DatePicker
+              selected={checkOut}
+              onChange={(date) => setCheckOut(date)}
+              placeholderText="Add dates"
+              dateFormat="dd MMM yyyy"
+              minDate={checkIn}
+              selectsEnd
+              startDate={checkIn}
+              endDate={checkOut}
+            />
           </div>
 
         </div>
